@@ -1,0 +1,9 @@
+- name: EDA Test
+  hosts: all
+  gather_facts: false
+  environment: "{{ environment_vars }}"
+
+  tasks:
+    - name: Got called from Github webhook
+      ansible.builtin.debug:
+        msg: "HELLO EDA!!!"
