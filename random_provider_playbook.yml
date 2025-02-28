@@ -1,0 +1,34 @@
+---
+- name: Generate Random Values with Terraform
+  hosts: localhost
+  gather_facts: no
+  vars:
+    terraform_dir: "./terraform"  # Path to your Terraform configuration directory
+
+  tasks:
+    - name: Initialize Terraform
+      community.general.terraform:
+        project_path: "{{ terraform_dir }}"
+        state: present
+        force_init: yes  # Force reinitialization if needed
+      register: terraform_init
+
+    - name: Debug Terraform Init Output
+      debug:
+        var: terraform_init
+
+    - name: Apply Terraform Configuration with Random Provider
+      community.general.terraform:
+        project_path: "{{ terraform_dir }}"
+        state: present
+        force_init: no
+        lock: yes  # Lock the state file during execution
+      register: terraform_apply
+
+    - name: Debug Terraform Apply Output
+      debug:
+        var: terraform_apply
+
+    - name: Output Terraform Results
+      debug:
+        msg: "Terraform apply completed with output: {{ terraform_apply.outputs }}"
