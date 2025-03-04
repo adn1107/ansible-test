@@ -2,6 +2,6 @@
 - name: Tasks to run after webhook detected an event [EDA]
   hosts: all
   tasks:
-  - name: Debug message from AAP Controller
-    ansible.builtin.debug:
-      msg: "Hello from Ansible Automation Platform!"
+    - name: Debug message from AAP Controller
+      ansible.builtin.debug:
+        msg: "Hello from Ansible Automation Platform!"
