@@ -15,8 +15,8 @@
         run_job_template:
           name: "Run on GitHub Commit"  # Name of the AAP Job Template
           organization: "Default"       # Organization in AAP
-          controller_url: "https://your-aap-controller.example.com"
-          controller_token: "your-aap-api-token"  # AAP API token
+          controller_url: "https://aap-aap.wxo4z-opc-opensearch-clus-47e063e6a3ad1f71bf2e58f91c3b4c2e-0000.us-south.containers.appdomain.cloud"
+          controller_token: "AKRH3XS0eJumDjsag6uuXzn7zS7BUa"  # AAP API token
           extra_vars:
             commit_message: "{{ event.payload.head_commit.message }}"
             commit_author: "{{ event.payload.head_commit.author.name }}"
