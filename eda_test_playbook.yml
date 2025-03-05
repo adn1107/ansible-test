@@ -2,7 +2,9 @@
 - name: Tasks to run after rulebook triggered
   hosts: localhost
   gather_facts: false
+  vars:
+    payload: {}
   tasks:
     - name: Debug message from AAP Controller
       ansible.builtin.debug:
-        msg: "Incoming commit: {{ payload.ref }}"
+        msg: "Incoming commit: {{ payload }}"
