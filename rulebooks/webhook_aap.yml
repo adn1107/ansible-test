@@ -4,11 +4,7 @@
   sources:
     - ansible.eda.webhook:
         host: 0.0.0.0
-        port: 8000
-    # - ansible.eda.github:
-    #     # token: "your_github_personal_access_token"  # Replace with your GitHub token
-    #     repository: "adn1107/ansible-test"       # Replace with your GitHub repository
-    #     event_filter: push                          # Listen for push events (commits)
+        port: 5000
   rules:
     - name: Trigger AAP job template on GitHub commit
       condition: event.payload.ref == "refs/heads/main"  # Trigger only for commits to the main branch
@@ -16,23 +12,6 @@
         run_job_template:
           name: "andy-eda-test"       # Replace with your AAP job template name
           organization: "Default"                   # Replace with your AAP organization
-          # controller_url: "https://your-aap-server.com"  # Replace with your AAP server URL
-          # controller_token: "your_aap_token"        # Replace with your AAP token
-
-# ---
-# - name: Listen for events on a webhook
-#   hosts: all
-#   sources:
-#     - ansible.eda.webhook:
-#         host: 0.0.0.0
-#         port: 8001
-#   rules:
-#   #
-#   # Process the splunk webhooks
-#   #
-#     - name: Rules to process Git commit
-#       condition: 
-#       action:
-#         run_job_template:
-#           name: eda-template-splunk
-#           organization: Default
+          job_args:
+            extra_vars:
+              commit_detail: "{{ event.payload.commits[0] }}"

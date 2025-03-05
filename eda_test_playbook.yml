@@ -1,7 +1,8 @@
 ---
-- name: Tasks to run after webhook detected an event [EDA]
-  hosts: all
+- name: Tasks to run after rulebook triggered
+  hosts: localhost
+  gather_facts: false
   tasks:
     - name: Debug message from AAP Controller
       ansible.builtin.debug:
-        msg: "Hello from Ansible Automation Platform!"
+        msg: "Incoming commit: {{ commit_detail }}"
