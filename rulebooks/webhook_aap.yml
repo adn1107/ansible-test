@@ -14,4 +14,4 @@
           organization: "Default"                   # Replace with your AAP organization
           job_args:
             extra_vars:
-              payload: "{{ event.payload }}"
+              payload: "{{ event.payload.commits[0].message }}"

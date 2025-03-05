@@ -3,8 +3,8 @@
   hosts: localhost
   gather_facts: false
   vars:
-    payload: {}
+    message: ''
   tasks:
     - name: Debug message from AAP Controller
       ansible.builtin.debug:
-        msg: "Incoming commit: {{ payload }}"
+        msg: "Incoming commit: {{ message }}"
