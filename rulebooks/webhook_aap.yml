@@ -4,7 +4,7 @@
   sources:
     - ansible.eda.webhook:
         host: eda2-aap.wxo4z-opc-opensearch-clus-47e063e6a3ad1f71bf2e58f91c3b4c2e-0000.us-south.containers.appdomain.cloud
-        port: 8000
+        port: 8001
     # - ansible.eda.github:
     #     # token: "your_github_personal_access_token"  # Replace with your GitHub token
     #     repository: "adn1107/ansible-test"       # Replace with your GitHub repository
